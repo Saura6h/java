@@ -10,12 +10,12 @@ class Student
 	public void savetToFile()throws IOException
 	{
 		FileWriter fwrite=new FileWriter("Datasheet.txt",true);//true appends the file rather than overwriting it
-		StringBuffer str=new StringBuffer("\nStudent");
+		StringBuffer str=new StringBuffer("Student");
 		str.append("\n"+rollno);
 		str.append("\n"+fname+" "+ lname);
 		str.append("\n"+marks1);
 		str.append("\n"+marks2);
-		str.append("\n"+marks3);
+		str.append("\n"+marks3+"\n");
 		fwrite.write(str.toString());//write function parameter must be string not stringbuffer
 		fwrite.close();
 	}
