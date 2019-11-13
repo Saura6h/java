@@ -16,7 +16,7 @@ class Student
 		str.append("\n"+marks1);
 		str.append("\n"+marks2);
 		str.append("\n"+marks3);
-		fwrite.write(str.toString());
+		fwrite.write(str.toString());//write function parameter must be string not stringbuffer
 		fwrite.close();
 	}
 
@@ -35,11 +35,11 @@ class Student
 	public void parseFromFile(String str)
 	{
 		// System.out.println(str);
-		String lines[] = str.split("\\r?\\n");
+		String lines[] = str.split("\\r?\\n");//split using regex function to split the string line wise
 		for(int i=1;i<lines.length;i+=7)
 		{
 			System.out.print("roll number:");
-			System.out.println(lines[i++]);
+			System.out.println(lines[i++]);//note this is use then change implementaion of ++
 			System.out.print("Name:");
 
 			System.out.println(lines[i++]);
