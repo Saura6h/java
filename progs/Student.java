@@ -16,11 +16,10 @@ class Student
 		str.append("\n"+marks1);
 		str.append("\n"+marks2);
 		str.append("\n"+marks3+"\n");
-		fwrite.write(str.toString());//write function parameter must be string not stringbuffer
+		fwrite.write(str.toString());
 		fwrite.close();
 	}
-
-	public void loadFromFile()throws IOException
+	public static void loadFromFile(String roll_no)throws IOException
 	{
 		File file =new File("Datasheet.txt");
 		FileReader fread=new FileReader(file);
@@ -29,30 +28,38 @@ class Student
         while((i=fread.read())!=-1)    
         	str.append((char)i); 
         fread.close();
-        parseFromFile(str.toString());
+        findFromFile(str.toString(),roll_no);
 
 	}
-	public void parseFromFile(String str)
+	public static void findFromFile(String str,String roll_no)
 	{
 		// System.out.println(str);
-		String lines[] = str.split("\\r?\\n");//split using regex function to split the string line wise
+		String lines[] = str.split("\\r?\\n");
 		for(int i=1;i<lines.length;i+=7)
 		{
-			System.out.print("roll number:");
-			System.out.println(lines[i++]);//note this is use then change implementaion of ++
-			System.out.print("Name:");
+			// System.out.println(roll_no+"=?"+lines[i]);
+			if(!roll_no.equals(lines[i++]))
+			{
+				i+=4;
+				continue;
 
-			System.out.println(lines[i++]);
-			int mark_1=Integer.parseInt(lines[i++]);
-			int mark_2=Integer.parseInt(lines[i++]);
-			int mark_3=Integer.parseInt(lines[i++]);
-			calAvg(mark_1,mark_3,mark_2);
+			}else{
+				System.out.print("roll number:");
+				System.out.println(roll_no);
+				System.out.print("Name:");
+				System.out.println(lines[i++]);
+				int mark_1=Integer.parseInt(lines[i++]);
+				int mark_2=Integer.parseInt(lines[i++]);
+				int mark_3=Integer.parseInt(lines[i++]);
+				calAvg(mark_1,mark_3,mark_2);
+			}
+
 		}
 			
 	}
 
 
-	public void calAvg(int a,int b, int c)
+	public static void calAvg(int a,int b, int c)
 	{
 		System.out.println("Average Marks:"+(a+b+c)/3);
 	}
@@ -84,15 +91,10 @@ class Student
 		Student s1=new Student();
 		s1.input();
 		s1.savetToFile();
-		s1.loadFromFile();
+		Scanner scn=new Scanner(System.in);
+		System.out.print("Enter roll number to find marks:");
+		String sk=scn.nextLine();
+		loadFromFile(sk);
 		
 	}
 }
-		
-
-
-
-// class LoadFile
-// {
-
-// }
