@@ -14,7 +14,7 @@ class Fraction
 		denum=b;
 	}
 
-	void show()throws Exception
+	void show()
 	{
 		if(denum!=0)
 		{
@@ -32,15 +32,15 @@ class Fraction
 			Fraction f1=new Fraction(5,3);
 			Fraction f2=new Fraction(5.2,3.2);
 			Fraction f3=new Fraction(5,0);
-			Fraction f4=new Fraction(0,3);
+			Fraction f3=new Fraction(5,0);
 		try{
 			f1.show();
 			f2.show();
 			f3.show();
-			f4.show();
 		}
 		catch(Exception e){
 			System.out.println("Denominator should not be zero");
+
 		}
 
 	}
