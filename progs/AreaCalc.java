@@ -24,13 +24,13 @@ class AreaCalc implements Rect,Triangle
 
 	}
 }
-interface Rect
-{
-	void rectArea(int a,int b);
-}
+// interface Rect
+// {
+// 	void rectArea(int a,int b);
+// }
 	
-interface Triangle
-{
-	void triangleArea(double a ,double b);
+// interface Triangle
+// {
+// 	void triangleArea(double a ,double b);
 
-}
+// }
